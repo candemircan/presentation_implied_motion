@@ -12,7 +12,7 @@ format:
         theme: moon
         slide-number: true 
 revealjs-plugins:
-  - pointer
+    - pointer
 ---
 
 ## Real motion and implied motion

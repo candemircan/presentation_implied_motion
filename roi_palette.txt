@@ -1,0 +1,18 @@
+V1 -> #F1BB7B
+V2 -> #F4A475
+V3 -> #F78D70
+
+V3b -> #FA766B
+hV4 -> #FB6B68
+LO1 -> #F56063
+LO2 -> #E05759
+VO1 -> #CB4D4E
+VO2 -> #B64344
+
+V3a -> #8C3030
+hMT -> #621D1B
+MST -> #752D1E
+
+IPS anterior -> #954426
+IPS posterior -> #B55B2E
+SPL1 -> #D67236
