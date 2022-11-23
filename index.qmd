@@ -1,0 +1,183 @@
+---
+title: "Processing of Real and Implied Motion in the Human Brain"
+author: "Can Demircan"
+institute: "Dr. Pablo Grassi & Prof. Dr. Andreas Bartels"
+bibliography: references.bib
+date: 24 11 2022
+date-format: long
+csl: nature.csl
+format:
+    revealjs:
+        css: style.css
+        theme: moon
+        slide-number: true 
+---
+
+## Real motion and implied motion
+
+:::: {.columns}
+
+::: {.column #hcenter width="50%"}
+![Real Motion](imgs/real_motion.gif){height=300}
+:::
+
+::: {.column #hcenter width="50%"}
+![Implied Motion](imgs/implied_motion.png){height=320}
+:::
+
+::::
+
+## What we know about real motion
+
+- Extensive and multimodal evidence for real motion processing along the visual hierarchy (V1 @livingstone_segregation_1988, V3A @tootell_functional_1997, MT+ @tootell_functional_1995, IPS @bremmer_polymodal_2001 and more).
+- Possible to infer the direction of motion given brain data @kamitani_decoding_2006.
+
+## What we know about implied motion
+
+- Can induce "motion-like" activity @kourtzi_activation_2000.
+- Processing is influenced by prior knowledge @kim_brain_2007.
+- Overlap in areas responding to real and implied motion @krekelberg_neural_2003.
+
+## Questions
+
+:::{.incremental}
+- Where is real motion processed in the human brain?
+- Where is implied motion processed in the human brain?
+- Is there a shared code between the two types of motion processing
+:::
+
+## Experiment - Real Motion Stimuli
+
+:::: {.columns}
+
+::: {.column #hcenter width="50%"}
+![Forward](imgs/real_forward_motion.png){height=200}
+
+ 
+![Left](imgs/real_left_motion.png){height=200}
+
+
+:::
+
+::: {.column #hcenter width="50%"}
+![Backward](imgs/real_backward_motion.png){height=200}
+
+
+![Right](imgs/real_right_motion.png){height=200}
+
+
+:::
+
+::::
+
+## Experiment - Implied Motion Stimuli
+
+:::: {.columns}
+
+::: {.column #hcenter width="50%"}
+![Forward](imgs/implied_forward_motion.png){height=200}
+
+ 
+![Left](imgs/implied_left_motion.png){height=200}
+
+
+:::
+
+::: {.column #hcenter width="50%"}
+![Backward](imgs/implied_backward_motion.png){height=200}
+
+
+![Right](imgs/implied_right_motion.png){height=200}
+
+
+:::
+
+::::
+
+## Experiment - Design
+
+- 2 runs of one motion type, followed by 2 runs of the other. 16 runs in total.
+- 4 repeats of each direction in a run.
+
+### Real Motion Task
+
+Press the button if the velocity of the stimulus increases
+
+### Implied Motion Task
+
+Press the button if the stimulus is the same as before.
+
+## Regions of Interest (ROI)
+
+:::{#hcenter}
+![Chunk into **i)** early visual areas **ii)** object areas **iii)** motion areas **iv)** parietal areas](imgs/rois.png)
+:::
+
+## Decoding Real and Implied Motion
+
+For a given ROI, motion axis, and motion type:
+
+:::{.incremental}
+- Model BOLD response using stimulus onsets and offsets in a general linear model.
+- Extract standardised coefficient maps from the model.
+- Train a linear classifier on the coefficient maps to predict motion direction in a leave one run out cross-validated fashion.  
+:::
+
+## Decoding Cross Motion
+
+Same pipeline, except cross-validation is now 2 fold.
+
+- Train on real motion, test on implied.
+- Train on implied motion, test on real.
+
+## Real Motion
+
+![](imgs/real_motion.svg){.r-stretch}
+
+## Implied Motion
+
+![](imgs/implied_motion.svg){.r-stretch}
+
+## Cross Motion
+
+![](imgs/cross_motion.svg){.r-stretch}
+
+## Future Steps with the Same Data
+
+There is A LOT that can be tried on the cross decoding pipeline:
+
+- Denoising
+- Different levels of smoothing
+- Different hemodynamic response functions 
+- Hyperparameter optimisation
+- Different feature selection strategies
+
+. . .
+
+But maybe the two types of motion are not represented similarly afterall ... 
+
+
+## Thank you
+
+:::: {.columns}
+
+::: {.column #hcenter width="50%"}
+![Pablo Grassi](imgs/pablo.jpg){height=300}
+:::
+
+::: {.column #hcenter width="50%"}
+![Andreas Bartels](imgs/andreas.jpg){height=300}
+:::
+
+::::
+
+:::{#hcenter}
+Everyone in the Vision & Cognition Lab
+
+and you for listening!
+:::
+
+## References
+
+::: {#refs}
+:::
