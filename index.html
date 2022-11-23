@@ -391,7 +391,8 @@ Can Demircan
 <section id="what-we-know-about-implied-motion" class="slide level2">
 <h2>What we know about implied motion</h2>
 <ul>
-<li>Can induce “motion-like” activity<span class="citation" data-cites="kourtzi_activation_2000"><sup><a href="#/references" role="doc-biblioref" onclick="">6</a></sup></span>.</li>
+<li>There are images that be perceived as motion even if they are static.</li>
+<li>They can induce “motion-like” activity<span class="citation" data-cites="kourtzi_activation_2000"><sup><a href="#/references" role="doc-biblioref" onclick="">6</a></sup></span>.</li>
 <li>Processing is influenced by prior knowledge<span class="citation" data-cites="kim_brain_2007"><sup><a href="#/references" role="doc-biblioref" onclick="">7</a></sup></span>.</li>
 <li>Overlap in areas responding to real and implied motion<span class="citation" data-cites="krekelberg_neural_2003"><sup><a href="#/references" role="doc-biblioref" onclick="">8</a></sup></span>.</li>
 </ul>
@@ -400,9 +401,9 @@ Can Demircan
 <h2>Questions</h2>
 <div>
 <ul>
-<li class="fragment">Where is real motion processed in the human brain?</li>
-<li class="fragment">Where is implied motion processed in the human brain?</li>
-<li class="fragment">Is there a shared code between the two types of motion processing</li>
+<li class="fragment">Where is real motion processed across the visual hierarchy?</li>
+<li class="fragment">Where is implied motion processed across the visual hierarchy?</li>
+<li class="fragment">Are the representations of real motion and implied motion similar?</li>
 </ul>
 </div>
 </section>
@@ -412,31 +413,47 @@ Can Demircan
 <div id="hcenter" class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="imgs/real_forward_motion.png" height="200"></p>
+<p><video data-src="imgs/real_forward_motion.mp4" height="200" controls=""><a href="imgs/real_forward_motion.mp4">Video</a></video></p>
 <p></p><figcaption>Forward</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="imgs/real_left_motion.png" height="200"></p>
+<p><video data-src="imgs/real_left_motion.mp4" height="200" controls=""><a href="imgs/real_left_motion.mp4">Video</a></video></p>
 <p></p><figcaption>Left</figcaption><p></p>
 </figure>
 </div>
 </div><div id="hcenter" class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="imgs/real_backward_motion.png" height="200"></p>
+<p><video data-src="imgs/real_backward_motion.mp4" height="200" controls=""><a href="imgs/real_backward_motion.mp4">Video</a></video></p>
 <p></p><figcaption>Backward</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="imgs/real_right_motion.png" height="200"></p>
+<p><video data-src="imgs/real_right_motion.mp4" height="200" controls=""><a href="imgs/real_right_motion.mp4">Video</a></video></p>
 <p></p><figcaption>Right</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
+<aside class="notes">
+<ul>
+<li>FB: zoom in vs zoom out of texture</li>
+<li>LR: phase scrambled images of naturalistic scenes</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="experiment---implied-motion-stimuli" class="slide level2">
 <h2>Experiment - Implied Motion Stimuli</h2>
@@ -473,6 +490,7 @@ Can Demircan
 <section id="experiment---design" class="slide level2">
 <h2>Experiment - Design</h2>
 <ul>
+<li><span class="math inline">\(n=19\)</span>, 3T MRI Scanner</li>
 <li>2 runs of one motion type, followed by 2 runs of the other. 16 runs in total.</li>
 <li>4 repeats of each direction in a run.</li>
 </ul>
@@ -481,8 +499,19 @@ Can Demircan
 <h3 id="implied-motion-task">Implied Motion Task</h3>
 <p>Press the button if the stimulus is the same as before.</p>
 </section>
-<section id="regions-of-interest-roi" class="slide level2">
-<h2>Regions of Interest (ROI)</h2>
+<section id="preprocessing" class="slide level2">
+<h2>Preprocessing</h2>
+<ul>
+<li>Used a standardised pipeline (fMRIPrep<span class="citation" data-cites="esteban_fmriprep_2019"><sup><a href="#/references" role="doc-biblioref" onclick="">9</a></sup></span>)</li>
+<li>Applied slice time correction</li>
+<li>Registered functional images to participants’ own structural images.</li>
+<li>When available, used fieldmaps for distortion correction.</li>
+<li>Estimated translation and rotation estimates for all three dimensions and used them in the model.</li>
+<li>No smoothing or denoising</li>
+</ul>
+</section>
+<section id="regions-of-interest-rois-wang_probabilistic_2015" class="slide level2">
+<h2>Regions of Interest (ROIs)<span class="citation" data-cites="wang_probabilistic_2015"><sup><a href="#/references" role="doc-biblioref" onclick="">10</a></sup></span></h2>
 <div id="hcenter">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -497,9 +526,9 @@ Can Demircan
 <p>For a given ROI, motion axis, and motion type:</p>
 <div>
 <ul>
-<li class="fragment">Model BOLD response using stimulus onsets and offsets in a general linear model.</li>
-<li class="fragment">Extract standardised coefficient maps from the model.</li>
-<li class="fragment">Train a linear classifier on the coefficient maps to predict motion direction in a leave one run out cross-validated fashion.<br>
+<li class="fragment">Modelled BOLD response using stimulus onsets and offsets in a general linear model.</li>
+<li class="fragment">Extracted standardised coefficient maps from the model.</li>
+<li class="fragment">Trained a linear classifier on the coefficient maps to predict motion direction in a leave one run out cross-validated fashion.<br>
 </li>
 </ul>
 </div>
@@ -507,10 +536,35 @@ Can Demircan
 <section id="decoding-cross-motion" class="slide level2">
 <h2>Decoding Cross Motion</h2>
 <p>Same pipeline, except cross-validation is now 2 fold.</p>
-<ul>
-<li>Train on real motion, test on implied.</li>
-<li>Train on implied motion, test on real.</li>
-</ul>
+<div id="squeeze" class="columns">
+<div id="hcenter" class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="imgs/real_motion.gif" height="170"></p>
+<p></p><figcaption>Train</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="imgs/real_motion.gif" height="170"></p>
+<p></p><figcaption>Test</figcaption><p></p>
+</figure>
+</div>
+</div><div id="hcenter" class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="imgs/implied_motion.png" height="170"></p>
+<p></p><figcaption>Test</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="imgs/implied_motion.png" height="170"></p>
+<p></p><figcaption>Train</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="real-motion" class="slide level2">
 <h2>Real Motion</h2>
@@ -588,6 +642,12 @@ Can Demircan
 </div>
 <div id="ref-krekelberg_neural_2003" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">8. </div><div class="csl-right-inline">Krekelberg, B., Dannenberg, S., Hoffmann, K.-P., Bremmer, F. &amp; Ross, J. <a href="https://doi.org/10.1038/nature01852">Neural correlates of implied motion</a>. <em>Nature</em> <strong>424</strong>, 674–677 (2003).</div>
+</div>
+<div id="ref-esteban_fmriprep_2019" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Esteban, O. <em>et al.</em> <a href="https://doi.org/10.1038/s41592-018-0235-4"><span class="nocase">fMRIPrep</span>: A robust preprocessing pipeline for functional <span>MRI</span></a>. <em>Nature Methods</em> <strong>16</strong>, 111–116 (2019).</div>
+</div>
+<div id="ref-wang_probabilistic_2015" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Wang, L., Mruczek, R. E. B., Arcaro, M. J. &amp; Kastner, S. <a href="https://doi.org/10.1093/cercor/bhu277">Probabilistic <span>Maps</span> of <span>Visual</span> <span>Topography</span> in <span>Human</span> <span>Cortex</span></a>. <em>Cerebral Cortex (New York, N.Y.: 1991)</em> <strong>25</strong>, 3911–3931 (2015).</div>
 </div>
 </div>
 <div class="footer footer-default">

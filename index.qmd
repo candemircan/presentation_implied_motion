@@ -10,7 +10,7 @@ format:
     revealjs:
         css: style.css
         theme: moon
-        slide-number: true 
+        slide-number: true
 revealjs-plugins:
     - pointer
 ---
@@ -36,16 +36,17 @@ revealjs-plugins:
 
 ## What we know about implied motion
 
-- Can induce "motion-like" activity @kourtzi_activation_2000.
+- There are images that be perceived as motion even if they are static.
+- They can induce "motion-like" activity @kourtzi_activation_2000.
 - Processing is influenced by prior knowledge @kim_brain_2007.
 - Overlap in areas responding to real and implied motion @krekelberg_neural_2003.
 
 ## Questions
 
 :::{.incremental}
-- Where is real motion processed in the human brain?
-- Where is implied motion processed in the human brain?
-- Is there a shared code between the two types of motion processing
+- Where is real motion processed across the visual hierarchy?
+- Where is implied motion processed across the visual hierarchy?
+- Are the representations of real motion and implied motion similar?
 :::
 
 ## Experiment - Real Motion Stimuli
@@ -53,24 +54,31 @@ revealjs-plugins:
 :::: {.columns}
 
 ::: {.column #hcenter width="50%"}
-![Forward](imgs/real_forward_motion.png){height=200}
+![Forward](imgs/real_forward_motion.mp4){height=200}
 
  
-![Left](imgs/real_left_motion.png){height=200}
+![Left](imgs/real_left_motion.mp4){height=200}
 
 
 :::
 
 ::: {.column #hcenter width="50%"}
-![Backward](imgs/real_backward_motion.png){height=200}
+![Backward](imgs/real_backward_motion.mp4){height=200}
 
 
-![Right](imgs/real_right_motion.png){height=200}
+![Right](imgs/real_right_motion.mp4){height=200}
 
 
 :::
 
 ::::
+
+::: {.notes}
+
+- FB: zoom in vs zoom out of texture
+- LR: phase scrambled images of naturalistic scenes
+
+:::
 
 ## Experiment - Implied Motion Stimuli
 
@@ -98,6 +106,7 @@ revealjs-plugins:
 
 ## Experiment - Design
 
+- $n=19$, 3T MRI Scanner
 - 2 runs of one motion type, followed by 2 runs of the other. 16 runs in total.
 - 4 repeats of each direction in a run.
 
@@ -109,7 +118,16 @@ Press the button if the velocity of the stimulus increases
 
 Press the button if the stimulus is the same as before.
 
-## Regions of Interest (ROI)
+## Preprocessing
+
+- Used a standardised pipeline (fMRIPrep @esteban_fmriprep_2019)
+- Applied slice time correction
+- Registered functional images to participants' own structural images.
+- When available, used fieldmaps for distortion correction.
+- Estimated translation and rotation estimates for all three dimensions and used them in the model.
+- No smoothing or denoising
+
+## Regions of Interest (ROIs) @wang_probabilistic_2015
 
 :::{#hcenter}
 ![Chunk into **i)** early visual areas **ii)** object areas **iii)** motion areas **iv)** parietal areas](imgs/rois.png)
@@ -120,17 +138,34 @@ Press the button if the stimulus is the same as before.
 For a given ROI, motion axis, and motion type:
 
 :::{.incremental}
-- Model BOLD response using stimulus onsets and offsets in a general linear model.
-- Extract standardised coefficient maps from the model.
-- Train a linear classifier on the coefficient maps to predict motion direction in a leave one run out cross-validated fashion.  
+- Modelled BOLD response using stimulus onsets and offsets in a general linear model.
+- Extracted standardised coefficient maps from the model.
+- Trained a linear classifier on the coefficient maps to predict motion direction in a leave one run out cross-validated fashion.  
 :::
 
 ## Decoding Cross Motion
 
 Same pipeline, except cross-validation is now 2 fold.
 
-- Train on real motion, test on implied.
-- Train on implied motion, test on real.
+:::: {.columns #squeeze}
+
+::: {.column #hcenter width="50%"}
+![Train](imgs/real_motion.gif){height=170}
+
+
+![Test](imgs/real_motion.gif){height=170}
+
+:::
+
+::: {.column #hcenter width="50%"}
+![Test](imgs/implied_motion.png){height=170}
+
+
+![Train](imgs/implied_motion.png){height=170}
+
+:::
+
+::::
 
 ## Real Motion
 
@@ -174,6 +209,7 @@ But maybe the two types of motion are not represented similarly afterall ...
 ::::
 
 :::{#hcenter}
+
 Everyone in the Vision & Cognition Lab
 
 and you for listening!
