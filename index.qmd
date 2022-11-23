@@ -11,6 +11,8 @@ format:
         css: style.css
         theme: moon
         slide-number: true 
+revealjs-plugins:
+  - pointer
 ---
 
 ## Real motion and implied motion
