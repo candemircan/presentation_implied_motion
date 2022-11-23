@@ -24,7 +24,7 @@ revealjs-plugins:
 :::
 
 ::: {.column #hcenter width="50%"}
-![Implied Motion](imgs/implied_motion.png){height=320}
+![Implied Motion](imgs/implied_motion.png){height=300}
 :::
 
 ::::
@@ -36,7 +36,7 @@ revealjs-plugins:
 
 ## What we know about implied motion
 
-- There are images that be perceived as motion even if they are static.
+- These are static images that are perceived as motion.
 - They can induce "motion-like" activity @kourtzi_activation_2000.
 - Processing is influenced by prior knowledge @kim_brain_2007.
 - Overlap in areas responding to real and implied motion @krekelberg_neural_2003.
@@ -106,32 +106,42 @@ revealjs-plugins:
 
 ## Experiment - Design
 
-- $n=19$, 3T MRI Scanner
-- 2 runs of one motion type, followed by 2 runs of the other. 16 runs in total.
-- 4 repeats of each direction in a run.
+:::{#hcenter}
 
-### Real Motion Task
+![](imgs/flow.png){height=400}
 
-Press the button if the velocity of the stimulus increases
+:::
 
-### Implied Motion Task
+:::{#squeeze}
+- Real Motion: Respond if stimulus got faster.
+- Implied Motion: Respond if stimulus did not change from the last trial.
+:::
 
-Press the button if the stimulus is the same as before.
+::: footer
+$n=19$ in a 3T MRI Scanner
+:::
 
 ## Preprocessing
 
 - Used a standardised pipeline (fMRIPrep @esteban_fmriprep_2019)
 - Applied slice time correction
 - Registered functional images to participants' own structural images.
-- When available, used fieldmaps for distortion correction.
+- When available, used field-maps for distortion correction.
 - Estimated translation and rotation estimates for all three dimensions and used them in the model.
 - No smoothing or denoising
 
 ## Regions of Interest (ROIs) @wang_probabilistic_2015
 
 :::{#hcenter}
-![Chunk into **i)** early visual areas **ii)** object areas **iii)** motion areas **iv)** parietal areas](imgs/rois.png)
+![](imgs/rois.png)
+
+<span style="color:#F1BB7B;">early visual areas,</span>
+<span style="color:#FD6467;">object areas,</span>
+<span style="color:#5B1A18;">motion areas,</span>
+<span style="color:#D67236;">parietal ares</span>
 :::
+
+
 
 ## Decoding Real and Implied Motion
 
@@ -150,7 +160,7 @@ Same pipeline, except cross-validation is now 2 fold.
 :::: {.columns #squeeze}
 
 ::: {.column #hcenter width="50%"}
-![Train](imgs/real_motion.gif){height=170}
+![Train](imgs/implied_motion.png){height=170}
 
 
 ![Test](imgs/real_motion.gif){height=170}
@@ -158,10 +168,10 @@ Same pipeline, except cross-validation is now 2 fold.
 :::
 
 ::: {.column #hcenter width="50%"}
+![Train](imgs/real_motion.gif){height=170}
+
+
 ![Test](imgs/implied_motion.png){height=170}
-
-
-![Train](imgs/implied_motion.png){height=170}
 
 :::
 

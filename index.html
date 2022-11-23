@@ -374,7 +374,7 @@ Can Demircan
 </div><div id="hcenter" class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="imgs/implied_motion.png" height="320"></p>
+<p><img data-src="imgs/implied_motion.png" height="300"></p>
 <p></p><figcaption>Implied Motion</figcaption><p></p>
 </figure>
 </div>
@@ -391,7 +391,7 @@ Can Demircan
 <section id="what-we-know-about-implied-motion" class="slide level2">
 <h2>What we know about implied motion</h2>
 <ul>
-<li>There are images that be perceived as motion even if they are static.</li>
+<li>These are static images that are perceived as motion.</li>
 <li>They can induce “motion-like” activity<span class="citation" data-cites="kourtzi_activation_2000"><sup><a href="#/references" role="doc-biblioref" onclick="">6</a></sup></span>.</li>
 <li>Processing is influenced by prior knowledge<span class="citation" data-cites="kim_brain_2007"><sup><a href="#/references" role="doc-biblioref" onclick="">7</a></sup></span>.</li>
 <li>Overlap in areas responding to real and implied motion<span class="citation" data-cites="krekelberg_neural_2003"><sup><a href="#/references" role="doc-biblioref" onclick="">8</a></sup></span>.</li>
@@ -489,15 +489,18 @@ Can Demircan
 </section>
 <section id="experiment---design" class="slide level2">
 <h2>Experiment - Design</h2>
+<div id="hcenter">
+<p><img data-src="imgs/flow.png" height="400"></p>
+</div>
+<div id="squeeze">
 <ul>
-<li><span class="math inline">\(n=19\)</span>, 3T MRI Scanner</li>
-<li>2 runs of one motion type, followed by 2 runs of the other. 16 runs in total.</li>
-<li>4 repeats of each direction in a run.</li>
+<li>Real Motion: Respond if stimulus got faster.</li>
+<li>Implied Motion: Respond if stimulus did not change from the last trial.</li>
 </ul>
-<h3 id="real-motion-task">Real Motion Task</h3>
-<p>Press the button if the velocity of the stimulus increases</p>
-<h3 id="implied-motion-task">Implied Motion Task</h3>
-<p>Press the button if the stimulus is the same as before.</p>
+</div>
+<div class="footer">
+<p><span class="math inline">\(n=19\)</span> in a 3T MRI Scanner</p>
+</div>
 </section>
 <section id="preprocessing" class="slide level2">
 <h2>Preprocessing</h2>
@@ -505,7 +508,7 @@ Can Demircan
 <li>Used a standardised pipeline (fMRIPrep<span class="citation" data-cites="esteban_fmriprep_2019"><sup><a href="#/references" role="doc-biblioref" onclick="">9</a></sup></span>)</li>
 <li>Applied slice time correction</li>
 <li>Registered functional images to participants’ own structural images.</li>
-<li>When available, used fieldmaps for distortion correction.</li>
+<li>When available, used field-maps for distortion correction.</li>
 <li>Estimated translation and rotation estimates for all three dimensions and used them in the model.</li>
 <li>No smoothing or denoising</li>
 </ul>
@@ -513,12 +516,8 @@ Can Demircan
 <section id="regions-of-interest-rois-wang_probabilistic_2015" class="slide level2">
 <h2>Regions of Interest (ROIs)<span class="citation" data-cites="wang_probabilistic_2015"><sup><a href="#/references" role="doc-biblioref" onclick="">10</a></sup></span></h2>
 <div id="hcenter">
-<div class="quarto-figure quarto-figure-center">
-<figure>
 <p><img data-src="imgs/rois.png"></p>
-<p></p><figcaption>Chunk into <strong>i)</strong> early visual areas <strong>ii)</strong> object areas <strong>iii)</strong> motion areas <strong>iv)</strong> parietal areas</figcaption><p></p>
-</figure>
-</div>
+<p><span style="color:#F1BB7B;">early visual areas,</span> <span style="color:#FD6467;">object areas,</span> <span style="color:#5B1A18;">motion areas,</span> <span style="color:#D67236;">parietal ares</span></p>
 </div>
 </section>
 <section id="decoding-real-and-implied-motion" class="slide level2">
@@ -540,7 +539,7 @@ Can Demircan
 <div id="hcenter" class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="imgs/real_motion.gif" height="170"></p>
+<p><img data-src="imgs/implied_motion.png" height="170"></p>
 <p></p><figcaption>Train</figcaption><p></p>
 </figure>
 </div>
@@ -553,14 +552,14 @@ Can Demircan
 </div><div id="hcenter" class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="imgs/implied_motion.png" height="170"></p>
-<p></p><figcaption>Test</figcaption><p></p>
+<p><img data-src="imgs/real_motion.gif" height="170"></p>
+<p></p><figcaption>Train</figcaption><p></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="imgs/implied_motion.png" height="170"></p>
-<p></p><figcaption>Train</figcaption><p></p>
+<p></p><figcaption>Test</figcaption><p></p>
 </figure>
 </div>
 </div>
