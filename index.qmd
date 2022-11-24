@@ -163,12 +163,12 @@ Same pipeline, except cross-validation is now 2 fold.
 ![Train](imgs/implied_motion.png){height=170}
 
 
-![Test](imgs/real_motion.gif){height=170}
+![Train](imgs/real_motion.gif){height=170}
 
 :::
 
 ::: {.column #hcenter width="50%"}
-![Train](imgs/real_motion.gif){height=170}
+![Test](imgs/real_motion.gif){height=170}
 
 
 ![Test](imgs/implied_motion.png){height=170}
